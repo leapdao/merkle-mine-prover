@@ -5,6 +5,7 @@ import { it, describe, afterEach, beforeEach } from 'mocha';
 import ProofManager from '../src/index';
 import ethUtil from 'ethereumjs-util';
 import MerkleTree from '../src/merkleTree';
+import SnapShot from '../snapshot_mock';
 
 chai.use(sinonChai);
 const accounts = ['0xc5cdcd5470aef35fc33bddff3f8ecec027f95b1d', '0x2af47a65da8cd66729b4209c22017d6a5c2d2400'];
@@ -14,6 +15,15 @@ const createProofManager = () => {
   const merkleTree = new MerkleTree(sortedAccounts);
   return new ProofManager(accounts, merkleTree);
 }
+
+describe('SnapShot', () => {
+  describe('getAccs()', () => {
+    it('should generate 25 random addresses', () => {
+      const snap = new SnapShot(25);
+      expect(snap.getAccs().length).to.eql(25);
+    });
+  });
+})
 
 describe('Proof Manager', () => {
   describe('getProof()', () => {

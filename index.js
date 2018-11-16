@@ -7,8 +7,6 @@ const accounts = new SnapShot(1500000).getAccs();
 let sortedAccounts;
 let merkleTree;
 
-console.log(accounts);
-
 exports.handler = async function handler(event, context, callback) {
   const path = event.context['resource-path'];
   if (!sortedAccounts) {
