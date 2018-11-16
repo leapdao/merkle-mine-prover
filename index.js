@@ -1,10 +1,13 @@
 import ProofManager from './src/index';
 import ethUtil from 'ethereumjs-util';
 import MerkleTree from './src/merkleTree';
+import SnapShot from './snapshot_mock';
 
-const accounts = ['0xc5cdcd5470aef35fc33bddff3f8ecec027f95b1d', '0x2af47a65da8cd66729b4209c22017d6a5c2d2400', '0x2eE5ADa0d47EC41e4C1c8dE55a83469825974A26'];
+const accounts = new SnapShot(1500000).getAccs();
 let sortedAccounts;
 let merkleTree;
+
+console.log(accounts);
 
 exports.handler = async function handler(event, context, callback) {
   const path = event.context['resource-path'];
