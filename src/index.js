@@ -7,6 +7,10 @@ class ProofManager {
     this.merkleTree = merkleTree;
   }
 
+  async getRoot() {
+    return this.merkleTree.getHexRoot();
+  }
+
   async getProof(address) {
     const pos = this.leafs.indexOf(address);
     if (pos === -1) {
